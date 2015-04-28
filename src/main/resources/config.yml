@@ -20,82 +20,65 @@
 
 ###############################################
 #
+#                   Storage
+#
 # First up in our little journey is the SQL
 # Info. There are multiple values here for you
 # To configure for storage of data.
 #
-#  DatabaseType - Determines what type of
-#    a databast you want to use.
-#    Valid Values -> [MySQL, SQLite]
-#  DBName - For [MySQL] this would be the DB
-#    Name. For SQLite it would be the filename
-#    (without the .db)
-#  DBUsername - For [MySQL] only. This would
-#    be the username to your MySQL storage.
-#  DBPassword - For [MySQL] only. This would
-#    be the password to your MySQL storage.
-#  DBHost - For [MySQL] only. This would
-#    be the host (without port) to your
-#    MySQL server.
-#  DBPort - For [MySQL] only. This would
-#    be the port (without host) to your
-#    MySQL server.
-#
 ###############################################
+
+
+# Determines what type of a database you want to use.
+#  Valid Values -> [MySQL, SQLite]
 DatabaseType: MySQL
+# For [MySQL] this would be the DB Name. 
+# For SQLite it would be the filename(without the .db)
 DBName: Warden
+# For [MySQL] only. This would be the username to your MySQL database.
 DBUsername: root
+# For [MySQL] only. This would be the password to your MySQL database.
 DBPassword: chucknorris
+# For [MySQL] only. This would be the ip (without port) to your MySQL server.
 DBHost: 127.0.0.1
+# For [MySQL] only. This would be the port (without the ip) to your MySQL server.
 DBPort: 3306
 
 
 ###############################################
+#
+#           To Be named later
 #
 # Next up in our journey is some permissions
 # info. There are multiple values here for you
 # that have pretty good presets. However feel
 # free to configure them to your wishes.
 #
-#  HidePlugins - Determines if warden should
-#    Hide other plugins from people who don't
-#    have the permission:
-#      warden.nohide.<pluginName>
-#  HidePluginMessage - Determines what warden
-#    should send when someone requests a
-#    plugin they shouldn't be allowed to see.
-#  HideWarden - Determines if WardenAC should
-#    Hide itself from people who can't
-#    configure this plugin.
-#  HideWardenVersion - Determines if Warden
-#    should hide it's version number from
-#    people who can't configure this plugin.
-#  AnyoneHasAccount - Determines wether a
-#   normal user can create a Warden account.
-#   Warden accounts have a special ranking
-#   system, HideWarden turns off for people
-#   who have an account, and they can
-#   report people (alternatively they can
-#   report through the permission node:
-#   warden.report)
-#  AccountsHavePasswords - Determines if
-#    WardenAC Accounts should have passwords
-#    This is highly reccomended in case
-#    someone else logins to your account!
-#  UseWardenAccounts - Should we use
-#   Warden Accounts?
-#
 ###############################################
+
+
+# Determines if warden should hide other plugins from people who don't have the permission:
+#      warden.nohide.<pluginName>
 HidePlugins: True
+# Determines what should sent when someone requests a plugin they shouldn't be allowed to see.
 HidePluginMessage: This has been disabled by your administrator.
+# Determines if WardenAC should hide itself from people who can't/haven't' configure this plugin.
 HideWarden: True
+# Determines if Warden should hide it's version number from people who want to exploit an old bug from this plugin. (or you can just keep Warden updated)
 HideWardenVersion: True
+# Determines whether a normal user can create a Warden account. 
+# Warden accounts have a special ranking system, HideWarden turns off for people who have an account, and they can report people
+# (alternatively they can report through the permission node: warden.report)
 AnyoneHasAccount: False
+# Determines if WardenAC Accounts should have passwords This is highly recommend in case someone else logins to your account!
 AccountsHavePasswords: True
+# Should we use Warden Accounts?
 UseWardenAccounts: True
 
 
 ###############################################
+#
+#                   Email
 #
 # Our next stop is SMTP! That's Right! Warden
 # is capable of sending emails! In fact! It
@@ -106,70 +89,49 @@ UseWardenAccounts: True
 # So anyway. These are the settings for all
 # of that stuff. Enjoy!
 #
-# ShouldSendBanReports - Determines if
-#  Warden should send ban reports.
-# UseHTMLEmail - Should use HTML email
-#  Style.
-# SendBanReportsTimeFrame - Determines
-#  How often Warden should send BanReports
-#  Valid Values -> [ HOURLY, DAILY,
-#    WEEKLY, MONTHLY, YEARLY ]
-# FromEmail - The Email that it's from.
-#  Note right now this only supports GMAIL!
-# FromDomain - The domain to send it from
-#  (e.g. GOOGLE, YAHOO, etc.) NOTE! ONLY
-#  GOOGLE is supported right now! Sorry!
-# FromUser - The user to login as username
-#  (generally the email address)
-# FromPassword - The user to login as
-#  password.
-# ShouldRetrieveBanAppeals - Determines if
-#  Warden should try to retrieve ban appeals
-#  from email.
-# BanAppealRefreshTimeFrame - Determines
-#  What the refresh time is for warden
-#  grabbing BanAppeals
-#  Valid Values -> [HALF-HOURLY, HOURLY,
-#   TWO-HOURS, DAILY]
-# RightToSeeBanAppeals - Determines who has
-#  the right to read ban appeals.
-#  Uses Warden Accounts.
-#  Valid Values -> [ ANYONE, USER,
-#   MODERATOR, ADMIN, OWNER ]
-# RightToJudgeBanAppeals - Determines who has
-#  the right to judge wether someone should be
-#  unbanned from ban appeals. Uses Warden
-#  accounts.
-#  Valid Values -> [ ANYONE, USER,
-#    MODERATOR, ADMIN, OWNER ]
-# GrabEmail - The Email to grab from (
-#  NOTE ONLY GOOGLE IS SUPPORTED )
-# GrabDomain - The domain to send it from
-#  (e.g. GOOGLE, YAHOO, etc.) NOTE! ONLY
-#  GOOGLE IS SUPPORTED RIGHT NOW! Sorry!
-# GrabUser - The user to login as for
-#  Grabbing Email. (Generally the email
-#  Address).
-# GrabPass - The password for the GrabEmail
-#
 ###############################################
+
+# Determines if Warden should send ban reports.
 ShouldSendBanReports: False
-UseHTMLEmail: True
+# Determines How often Warden should send BanReports
+#  Valid Values -> [ HOURLY, DAILY, WEEKLY, MONTHLY, YEARLY ]
 SendBanReportsTimeFrame: WEEKLY
+# Use HTML email Style
+UseHTMLEmail: True
+# The Email that it's from.
+#  Note right now this only supports GMAIL!
 FromEmail: myemail@gmail.com
+# The domain to send it from(e.g. GOOGLE, YAHOO, etc.) 
+# NOTE! ONLY GOOGLE is supported right now! Sorry!
 FromDomain: GOOGLE
+# The user to login as username (generally the email address)
 FromUser: myemail@gmail.com
+# The user to login as password.
 FromPassword: myAwesomePassword6328
+# Determines if Warden should try to retrieve ban appeals from email.
 ShouldRetrieveBanAppeals: False
+# Determines what the refresh time is for warden grabbing BanAppeals
+#  Valid Values -> [HALF-HOURLY, HOURLY, TWO-HOURS, DAILY]
 BanAppealRefreshTimeFrame: HOURLY
+# Determines who has the right to read ban appeals.
+#  Needs Warden Accounts to be used.
+#  Valid Values -> [ ANYONE, USER, MODERATOR, ADMIN, OWNER ]
 RightToSeeBanAppeals: MODERATOR
+# Determines who has the right to judge whether someone should be unbanned from ban appeals. 
+# Valid Values -> [ ANYONE, USER, MODERATOR, ADMIN, OWNER ]
 RightToJudgeBanAppeals: ADMIN
+# The Email to grab from (NOTE ONLY GOOGLE IS SUPPORTED )
 GrabEmail: myemail@gmail.com
+# The domain to send it from (e.g. GOOGLE, YAHOO, etc.) NOTE! ONLY
 GrabDomain: GOOGLE
+# The user to login as for Grabbing Email. (Generally the email Address).
 GrabUser: myemail@gmail.com
+# GrabPass - The password for the GrabEmail
 GrabPass: myAwesomePassword6328
 
 ###############################################
+#
+#           How much hack till ban
 #
 # Next in our stop is violation levels. This
 # is where the configuration goes for how many
@@ -186,47 +148,33 @@ BANAT: HIGH
 
 ###############################################
 #
+#              Login
+#
 # Next in our magical journey is login
 # protection stuff. This has to deal with
 # anything closely related to a player logging
-# in. For example wether or not to block Tor
+# in. For example whether or not to block Tor
 # A popular anonymization proxy.
 #
-#  BlockTor - Tor being the online anonimizing
-#   proxy. Tons of people use this. A proxy
-#   is a way to hide a players true ip address.
-#   thus allowing to evade IP bans.
-#  LoginProtectionBanOrWhitelist - Determines
-#   wether or not LoginProtection should ban
-#   players who are spam-botting, or if it
-#   should apply a white list. Possible values
-#   are "WHITELIST" or "BAN". If the value
-#   isn't recognized it will default to
-#   whitelisting the players.
-#  LoginWhitelistBuffer - How long the
-#   whitelist should stay up for. It is
-#   important to note that this is measured
-#   in minutes. NOTE: Decimals are not
-#   supported, and if not recognized than
-#   the default will be 2 minutes.
-#  LoginTimeBetweenLogin - How long there
-#   should at least be between each login
-#   note this is measured in seconds.
-#   NOTE: Decimals are not supported, and
-#   if not reconginzed will default to 3
-#   seconds.
-#  LoginFailureWhiteList - How many times
-#   a LoginTimeBetweenLogin isn't met before
-#   applying a whitelist/ban. Basically how
-#   many violations before throwing up a
-#   whitelist/banning people. Note: Doesn't
-#   support decimals, defaults to 5.
-#
 ###############################################
+
+# Tor being the online anonymizing proxy. Tons of people use this. 
+# A proxy is a way to hide a players true ip address, thus allowing to evade IP bans.
 BlockTor: False
+# Determines whether or not LoginProtection should ban players who are spam-botting, or if it should apply a white list. 
+# Possible values are "WHITELIST" or "BAN". if the value isn't recognized it will default to whitelisting the players.
 LoginProtectionBanOrWhitelist: WHITELIST
+# How long the whitelist should stay up for.
+# It is important to note that this is measured in minutes. 
+# NOTE: Decimals are not supported, and if not recognized than the default will be 2 minutes.
 LoginWhitelistBuffer: 2
+# How long there should at least be between each login
+# NOTE: this is measured in seconds.
+# Also note that Decimals are not supported, and if not recognized will default to 3 seconds.
 LoginTimeBetweenLogin: 3
+# How many times a LoginTimeBetweenLogin isn't met before applying a whitelist/ban. 
+# Basically how many violations before throwing up a whitelist/banning people. 
+# Note: Doesn't support decimals, defaults to 5.
 LoginFailureWhitelist: 5
 
 ###############################################
@@ -253,7 +201,7 @@ QUICKDROP: 100
 #
 # The final stop in our journey is simple!
 # We've reached the miscellaneous config!
-# That's right heres some random stuff!
+# That's right here's some random stuff!
 #
 #  LongLogMessage: Determines if we should
 #    use a longer log prefix or not.
